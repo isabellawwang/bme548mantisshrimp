@@ -66,10 +66,12 @@ for i in range(0,48,2):
     count += 1
 
 averages = np.average(all_column_diffs, axis=0)
+error = np.std(all_column_diffs, axis=0)
+
 fig = plt.figure(num = 1, clear = True) #create figure
 ax = fig.add_subplot(1,1,1) #create subplot
 ax.grid(color='gray', linestyle='dotted', linewidth=1)
-ax.bar(column_diffs.index, averages)
+ax.bar(column_diffs.index, averages, yerr = error)
 plt.xlabel('Location') #x label
 plt.ylabel('Pixel Difference') #y label
 plt.title("Average Pixel Difference in Test Set")
